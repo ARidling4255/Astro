@@ -1,0 +1,492 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Baumans", "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --color-paper: #f7f6f3;
+  --color-card: #ffffff;
+  --color-ink: #1a1d21;
+  --color-muted: #5d656c;
+  --color-line: #e6e4de;
+  --color-pop: #f4c400;
+  --color-coral: #087a88;
+  --color-orange: #0b6570;
+  --color-orange-soft: #e5f6f7;
+  --color-on-orange: #ffffff;
+  --color-navy: #d31270;
+  --color-on-navy: #ffffff;
+  --color-navy-soft: #ffe4f1;
+  --color-just: #f4c400;
+  --color-just-soft: #f3f1ec;
+  --color-hero: #ffffff;
+  --color-hero-raise: #f4fbfb;
+  --color-hero-line: #e5f4f5;
+  --color-on-hero: #1a1d21;
+  --color-hero-muted: #5d656c;
+  --color-track: #eceae4;
+  --radius-card: 1.5rem;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+    letter-spacing: 0.12em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .capsule {
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0b6570;
+    border: 1.5px solid #12b4c4;
+    box-shadow:
+      0 0 0 3px rgba(18, 180, 196, 0.16),
+      0 0 16px rgba(18, 180, 196, 0.42);
+    font-family: var(--font-display);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .capsule-quiet {
+    border-radius: 999px;
+    background: #ffffff;
+    color: #1a1d21;
+    border: 1.5px solid #f4c400;
+    box-shadow: 0 0 0 3px rgba(244, 196, 0, 0.2);
+    font-family: var(--font-display);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .capsule-hot {
+    border-color: #d31270;
+    color: #a10d56;
+    box-shadow:
+      0 0 0 3px rgba(211, 18, 112, 0.16),
+      0 0 16px rgba(211, 18, 112, 0.4);
+  }
+
+  .bg-just-soft > button.bg-card {
+    box-shadow:
+      inset 0 -2px 0 #087a88,
+      0 0 12px rgba(8, 122, 136, 0.28);
+  }
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --color-paper: #070b16;
+  --color-card: #121a2c;
+  --color-ink: #f4f1e6;
+  --color-muted: #b7c0cc;
+  --color-line: #2c3850;
+  --color-orange: #5ad4e2;
+  --color-orange-soft: #123840;
+  --color-hero: #101828;
+  --color-hero-raise: #182338;
+  --color-hero-line: #24344c;
+  --color-on-hero: #f4f1e6;
+  --color-hero-muted: #b7c0cc;
+  --color-track: #1c2638;
+  --color-just-soft: #1a2336;
+}
+
+html[data-theme="dark"] .capsule {
+  background: #101828;
+  color: #7eebf4;
+  border-color: #12b4c4;
+  box-shadow:
+    0 0 0 3px rgba(18, 180, 196, 0.22),
+    0 0 18px rgba(18, 180, 196, 0.5);
+}
+
+html[data-theme="dark"] .capsule-quiet {
+  background: #101828;
+  color: #f4c400;
+  border-color: #f4c400;
+  box-shadow: 0 0 0 3px rgba(244, 196, 0, 0.16);
+}
+
+html[data-theme="dark"] .capsule-hot {
+  color: #ff8ab8;
+  border-color: #ff4b96;
+  box-shadow:
+    0 0 0 3px rgba(255, 75, 150, 0.2),
+    0 0 16px rgba(255, 75, 150, 0.45);
+}
+
+html[data-theme="dark"] .bg-just.text-ink {
+  color: #1a1408;
+}
+
+html[data-theme="dark"] .text-navy {
+  color: #ff7ab8;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes rocket-by {
+  0% {
+    transform: translate3d(-50vw, 76vh, 0) rotate(-4deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(108vw, 64vh, 0) rotate(-1deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shoot-by {
+  0% {
+    transform: translate3d(72vw, -4vh, 0) rotate(-32deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-28vw, 48vh, 0) rotate(-32deg);
+    opacity: 0;
+  }
+}
+
+@keyframes alien-by {
+  0% {
+    transform: translate3d(112vw, 86vh, 0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-40vw, 74vh, 0);
+    opacity: 0;
+  }
+}
+
+.star {
+  animation: twinkle 2.8s ease-in-out infinite;
+}
+
+.sky-lane {
+  height: 4.75rem;
+}
+
+.rocket-by {
+  animation: rocket-by 7.2s linear forwards;
+  will-change: transform, opacity;
+}
+
+.rocket-plume {
+  width: 2.7rem;
+  height: 1rem;
+  flex: none;
+  overflow: visible;
+}
+
+.tongue {
+  transform-box: view-box;
+  transform-origin: 100% 50%;
+}
+
+.tongue-outer {
+  animation: plume 170ms ease-in-out infinite;
+}
+
+.tongue-mid {
+  animation: plume 120ms ease-in-out infinite reverse;
+}
+
+.tongue-core {
+  animation: plume 85ms linear infinite;
+}
+
+.ember {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ember-back 420ms linear infinite;
+}
+
+.ember-b {
+  animation-duration: 560ms;
+  animation-delay: -180ms;
+  --drift: 5px;
+}
+
+.ember-c {
+  animation-duration: 320ms;
+  animation-delay: -260ms;
+  --drift: -4px;
+}
+
+@keyframes plume {
+  0% {
+    transform: scaleX(0.45) scaleY(0.72);
+    opacity: 0.55;
+  }
+  45% {
+    transform: scaleX(1.18) scaleY(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0.55) scaleY(0.66);
+    opacity: 0.45;
+  }
+}
+
+@keyframes ember-back {
+  0% {
+    transform: translate(0, 0) scale(0.7);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-32px, var(--drift, 0px)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.shoot-by {
+  animation: shoot-by 1.35s ease-in forwards;
+  will-change: transform, opacity;
+}
+
+.alien-by {
+  animation: alien-by 11s linear forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes ufo-sway {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -3px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.ufo-bob {
+  animation: ufo-sway 1.8s ease-in-out infinite;
+}
+
+.sputnik-by {
+  animation: sputnik-by 12s linear forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes sputnik-by {
+  0% {
+    transform: translate3d(-42vw, 7vh, 0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(108vw, 9vh, 0);
+    opacity: 0;
+  }
+}
+
+.sputnik-wobble {
+  animation: sputnik-wobble 4.5s ease-in-out infinite;
+}
+
+@keyframes sputnik-wobble {
+  0%,
+  100% {
+    transform: rotate(177deg);
+  }
+  50% {
+    transform: rotate(183deg);
+  }
+}
+
+@media (max-width: 1023px) {
+  .rocket-by {
+    animation-name: rocket-by-mobile;
+  }
+
+  .shoot-by {
+    animation-name: shoot-by-mobile;
+  }
+
+  .alien-by {
+    animation-name: alien-by-mobile;
+  }
+
+  .sputnik-by {
+    animation-name: sputnik-by-mobile;
+  }
+
+  .sputnik-wobble {
+    height: 3.25rem;
+  }
+}
+
+@keyframes rocket-by-mobile {
+  0% {
+    transform: translate3d(-70vw, 4.15rem, 0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(118vw, 4.55rem, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes shoot-by-mobile {
+  0% {
+    transform: translate3d(88vw, 4.05rem, 0) rotate(-18deg);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-36vw, 5.6rem, 0) rotate(-18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes alien-by-mobile {
+  0% {
+    transform: translate3d(120vw, 4.7rem, 0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-48vw, 4.2rem, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes sputnik-by-mobile {
+  0% {
+    transform: translate3d(-48vw, 4.05rem, 0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(112vw, 4.45rem, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes sheet-rise {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.sheet-rise {
+  animation: sheet-rise 200ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet-rise,
+  .star,
+  .rocket-by,
+  .shoot-by,
+  .alien-by,
+  .sputnik-by,
+  .sputnik-wobble {
+    animation: none;
+  }
+
+  .star {
+    opacity: 0.65;
+  }
+
+  .tongue,
+  .ember,
+  .ufo-bob {
+    animation: none;
+  }
+
+  .rocket-by,
+  .shoot-by,
+  .alien-by,
+  .sputnik-by {
+    display: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
